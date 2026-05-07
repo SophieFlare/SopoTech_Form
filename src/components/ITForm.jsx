@@ -187,7 +187,7 @@ const downloadBothPDFs = async () => {
 <div className="absolute left-0 top-full mt-2 w-full opacity-0 group-hover:opacity-100 transition-all duration-200 z-[9999]">
   <div className="bg-[#2b75ae] text-white text-xs px-3 py-2 rounded-lg shadow-xl flex items-center justify-between">
     <span>📌 რეზიუმე მზადაა გადმოსაწერად</span>
-    <span className="opacity-80">use bottom button ↓</span>
+    <span className="opacity-80">დააწექით ქვედა ღილაკს↓</span>
   </div>
 </div>
   </div>
@@ -201,15 +201,28 @@ const downloadBothPDFs = async () => {
               </div>
             </Card>
 
-            {/* SYSTEM OPS */}
-            <Card title="სისტემური ოპერაციები">
-                <div className="text-sm space-y-2 text-black">
-              <div>CMD/PowerShell: სისტემის კონფიგურაცია & დიაგნოსტიკა</div>
-            
-              <div>BIOS/UEFI: კონფიგურაცია & სისტემის გამართვა</div> 
-               <div>ადმინისტრირება: მომხმარებლები & ქსელი</div>
-              </div>
-            </Card>
+          {/* SYSTEM OPS */}
+<Card title="სისტემური ოპერაციები">
+  <div className="text-sm space-y-2 text-black">
+
+    <div>
+      <span className="font-semibold">OS:</span> Windows
+    </div>
+
+    <div>
+      <span className="font-semibold">CLI:</span> CMD / PowerShell / Linux
+    </div>
+
+    <div>
+      <span className="font-semibold">System:</span> BIOS / UEFI
+    </div>
+
+<div>
+  <span className="font-semibold">Network:</span> TCP/IP stack, subnetting basics, DHCP, DNS resolution, LAN/WAN, routing fundamentals, diagnostics
+</div>
+
+  </div>
+</Card>
 
             {/* PROGRAMMING */}
             <Card title="პროგრამირება">
