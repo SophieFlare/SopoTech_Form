@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import html2pdf from "html2pdf.js";
 import CVBtn from "./CVBtn";
-import { FiDownload } from "react-icons/fi";
+import { FiDownload, FiTool, FiClipboard   } from "react-icons/fi";
+
 export default function Form({ onClose }) {
   const fields = [
     { label: "სახელი:", value: "სოფო" },
@@ -118,20 +119,36 @@ const downloadBothPDFs = async () => {
         >
 
           {/* HEADER */}
-          <div
-            className="h-14 flex items-center justify-between px-4 text-white font-geo"
-            style={{ backgroundColor: "#2b75ae" }}
-          >
-            <span>📄 განაცხადის გაკეთება</span>
-            <span
-              onClick={onClose}
-              className="cursor-pointer text-lg opacity-80 hover:opacity-100"
-            >
-              ✕
-            </span>
-          </div>
+      <div
+  className="h-14 flex items-center justify-between px-4 text-white font-geo"
+  style={{ backgroundColor: "#2b75ae" }}
+>
+  {/* LEFT SIDE */}
+  <div className="flex items-center gap-2">
+    <FiClipboard size={16} className="text-white/90" />
+    <span>განაცხადის ფორმა</span>
+  </div>
 
-          {/* BODY */}
+  {/* CLOSE BUTTON */}
+  <span
+    onClick={onClose}
+    className="cursor-pointer text-lg opacity-80 hover:opacity-100"
+  >
+    ✕
+  </span>
+</div>
+{/* SUBHEADER */}
+<div className="h-9 flex items-center px-4 bg-[#245f8c] text-white text-xs font-geo border-b border-white/10">
+  <div className="flex items-center gap-2">
+    
+    <FiTool  className="text-white/90" size={14} />
+
+    <span className="opacity-90">
+      აბონენტთა IT მხარდაჭერის სპეციალისტი
+    </span>
+  </div>
+
+</div>  {/* BODY */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
 
             {/* FIELDS (UNCHANGED) */}
@@ -148,12 +165,33 @@ const downloadBothPDFs = async () => {
               ))}
             </div>
 
-            {/* CV DOWNLOAD (STATIC FILE) */}
-            <Card title="რეზიუმე (PDF)">
-              <div className="text-center">
-                <CVBtn onClick={downloadCVFile} />
-              </div>
-            </Card>
+   <Card title="რეზიუმე (PDF)">
+  <div className="relative group cursor-default">
+
+    {/* Fake file row */}
+    <div className="flex items-center gap-3 p-3 bg-white border rounded-lg shadow-sm">
+      
+      {/* file icon */}
+      <div className="w-10 h-10 bg-[#2b75ae] text-white flex items-center justify-center rounded-md font-bold">
+        PDF
+      </div>
+
+      {/* file name */}
+      <div className="text-sm text-black font-medium">
+        Sopo_IT_CV.pdf
+      </div>
+
+    </div>
+
+  {/* Hover tooltip / message bar */}
+<div className="absolute left-0 top-full mt-2 w-full opacity-0 group-hover:opacity-100 transition-all duration-200 z-[9999]">
+  <div className="bg-[#2b75ae] text-white text-xs px-3 py-2 rounded-lg shadow-xl flex items-center justify-between">
+    <span>📌 რეზიუმე მზადაა გადმოსაწერად</span>
+    <span className="opacity-80">use bottom button ↓</span>
+  </div>
+</div>
+  </div>
+</Card>
 
             {/* EDUCATION */}
             <Card title="განათლება">
@@ -165,9 +203,12 @@ const downloadBothPDFs = async () => {
 
             {/* SYSTEM OPS */}
             <Card title="სისტემური ოპერაციები">
-              <div>CMD/PowerShell: სისტემის კონფიგურაცია და დიაგნოსტიკა</div>
-              <div>ადმინისტრირება: მომხმარებლები და ქსელი</div>
-              <div>BIOS/UEFI: კონფიგურაცია და სისტემის გამართვა</div>
+                <div className="text-sm space-y-2 text-black">
+              <div>CMD/PowerShell: სისტემის კონფიგურაცია & დიაგნოსტიკა</div>
+            
+              <div>BIOS/UEFI: კონფიგურაცია & სისტემის გამართვა</div> 
+               <div>ადმინისტრირება: მომხმარებლები & ქსელი</div>
+              </div>
             </Card>
 
             {/* PROGRAMMING */}
@@ -212,15 +253,13 @@ const downloadBothPDFs = async () => {
 
           {/* FOOTER (FORM PDF EXPORT) */}
           <div className="p-3 border-t bg-gray-100">
-          <button
-  onClick={downloadBothPDFs}
+          <div 
   className="w-full h-10 bg-[#2b75ae] hover:bg-[#225e8b] text-white rounded-lg font-geo font-semibold flex items-center justify-center gap-2"
 >
-  <FiDownload  size={18} />
-  PDF ჩამოტვირთვა
-</button>
-          </div>
+  <CVBtn onClick={downloadCVFile} />
 
+          </div>
+</div>
         </div>
       </div>
     </div>

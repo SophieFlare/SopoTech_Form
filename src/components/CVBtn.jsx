@@ -10,7 +10,7 @@ const CVBtn = ({ onClick }) => {
       whileTap={{ scale: 0.96 }}
       transition={{ type: "spring", stiffness: 350, damping: 16 }}
       className="
-        relative w-full max-w-[240px]
+        relative w-full 
         mx-auto
 
         flex items-center justify-center gap-2
