@@ -2,20 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ✅ FONT */
 @font-face {
   font-family: "Geo";
   src: url("./assets/fonts/geo.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* BASE */
 body {
   background: #020617;
   color: white;
+  font-family: "Geo", sans-serif;
 }

@@ -16,31 +16,39 @@ const CVBtn = ({ onClick }) => {
 
         px-5 py-3
 
-        text-white font-medium tracking-wide text-sm
+        text-[#0b3b5c] font-medium tracking-wide text-sm
 
         rounded-xl
 
-        border border-white/10
+        border border-sky-200/40
 
-        bg-white/10 backdrop-blur-xl
+        bg-sky-300/20 backdrop-blur-xl
 
-        shadow-[0_8px_30px_rgba(0,0,0,0.25)]
+        shadow-[0_8px_30px_rgba(56,189,248,0.25)]
 
         overflow-hidden
       "
     >
-      {/* glow orb */}
-      <div className="
-        absolute inset-0
-        bg-gradient-to-r from-[#4fc3f7]/20 via-white/10 to-[#2b75ae]/20
-        opacity-60
-      " />
+      {/* glow background */}
+      <div
+        className="
+          absolute inset-0
+          bg-gradient-to-r
+          from-sky-300/40
+          via-cyan-200/20
+          to-blue-400/40
+          opacity-80
+        "
+      />
 
       {/* animated light sweep */}
       <motion.div
         className="
           absolute inset-0
-          bg-gradient-to-r from-transparent via-white/20 to-transparent
+          bg-gradient-to-r
+          from-transparent
+          via-white/30
+          to-transparent
         "
         animate={{ x: ["-120%", "120%"] }}
         transition={{
@@ -51,15 +59,17 @@ const CVBtn = ({ onClick }) => {
       />
 
       {/* border glow */}
-      <div className="
-        absolute inset-0
-        rounded-xl
-        border border-white/20
-        shadow-[inset_0_0_10px_rgba(255,255,255,0.1)]
-      " />
+      <div
+        className="
+          absolute inset-0
+          rounded-xl
+          border border-sky-100/40
+          shadow-[inset_0_0_12px_rgba(255,255,255,0.25)]
+        "
+      />
 
       {/* text */}
-      <span className="relative z-10 flex items-center gap-2">
+      <span className="relative z-10 flex items-center gap-2 text-white">
         📄 CV ჩამოტვირთვა
       </span>
     </motion.button>
