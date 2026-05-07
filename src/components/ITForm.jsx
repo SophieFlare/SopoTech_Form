@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import html2pdf from "html2pdf.js";
 import CVBtn from "./CVBtn";
-
+import { FiDownload } from "react-icons/fi";
 export default function Form({ onClose }) {
   const fields = [
     { label: "სახელი:", value: "სოფო" },
@@ -29,22 +29,75 @@ export default function Form({ onClose }) {
     document.body.style.overflow = "hidden";
     return () => (document.body.style.overflow = "auto");
   }, []);
+const downloadBothPDFs = async () => {
+  const original = document.getElementById("cv");
 
-  // ✅ GENERATE PDF FROM FORM
-  const downloadFormPDF = async () => {
-    const element = document.getElementById("cv");
-    if (!element) return;
+  if (!original) return;
 
-    const opt = {
-      margin: 0,
-      filename: "Sopo_IT_Form.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
-    };
+  // 1. create print container
+  const printContainer = document.createElement("div");
 
-    await html2pdf().set(opt).from(element).save();
+  printContainer.style.position = "fixed";
+  printContainer.style.left = "0";
+  printContainer.style.top = "0";
+  printContainer.style.width = "100%";
+  printContainer.style.height = "100%";
+  printContainer.style.background = "white";
+  printContainer.style.zIndex = "999999";
+
+  // 2. clone properly
+  const clone = original.cloneNode(true);
+
+  // IMPORTANT FIXES
+  clone.style.maxHeight = "none";
+  clone.style.height = "auto";
+  clone.style.overflow = "visible";
+  clone.style.width = "794px";
+  clone.style.margin = "0 auto";
+
+  const scrollContainer = clone.querySelector(".overflow-y-auto");
+  if (scrollContainer) {
+    scrollContainer.style.overflow = "visible";
+    scrollContainer.style.maxHeight = "none";
+    scrollContainer.style.height = "auto";
+  }
+
+  printContainer.appendChild(clone);
+  document.body.appendChild(printContainer);
+
+  // wait for render
+  await new Promise((r) => setTimeout(r, 300));
+
+  const opt = {
+    margin: 0,
+    filename: "Sopo_IT_Form.pdf",
+    image: { type: "jpeg", quality: 1 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      scrollY: 0,
+    },
+    jsPDF: {
+      unit: "px",
+      format: "a4",
+      orientation: "portrait",
+    },
   };
+
+  await html2pdf().set(opt).from(printContainer).save();
+
+  // cleanup
+  document.body.removeChild(printContainer);
+
+  // second PDF (CV file)
+  setTimeout(() => {
+    const link = document.createElement("a");
+    link.href = "/Sopo_IT_CV_.pdf";
+    link.download = "Sopo_IT_CV.pdf";
+    link.click();
+  }, 400);
+};
+
 
   // ✅ DOWNLOAD EXISTING CV FILE
   const downloadCVFile = () => {
@@ -159,12 +212,13 @@ export default function Form({ onClose }) {
 
           {/* FOOTER (FORM PDF EXPORT) */}
           <div className="p-3 border-t bg-gray-100">
-            <button
-              onClick={downloadFormPDF}
-              className="w-full h-10 bg-[#2b75ae] hover:bg-[#225e8b] text-white rounded-lg font-geo font-semibold"
-            >
-              PDF ჩამოტვირთვა
-            </button>
+          <button
+  onClick={downloadBothPDFs}
+  className="w-full h-10 bg-[#2b75ae] hover:bg-[#225e8b] text-white rounded-lg font-geo font-semibold flex items-center justify-center gap-2"
+>
+  <FiDownload  size={18} />
+  PDF ჩამოტვირთვა
+</button>
           </div>
 
         </div>
