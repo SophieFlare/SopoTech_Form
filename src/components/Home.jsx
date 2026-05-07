@@ -1,9 +1,11 @@
 import React from 'react'
-import CVForm from "./CVForm"
+import ITForm from "./ITForm"
+
+
 const Home = () => {
   return (
     <div>
-      <CVForm/>
+      <ITForm/>
     </div>
   )
 }

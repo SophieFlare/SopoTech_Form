@@ -2,7 +2,7 @@
   "name": "it_cv_form",
   "private": true,
   "version": "0.0.0",
-"type": "commonjs",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^12.38.0",
     "html2pdf.js": "^0.14.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
