@@ -5,7 +5,7 @@
 /* ✅ FONT */
 @font-face {
   font-family: "Geo";
-  src: url("./assets/fonts/geo.ttf") format("truetype");
+  src: url("/fonts/geo.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -20,7 +20,6 @@
 
 /* BASE */
 body {
-  background: #020617;
+  background: #3253e9;
   color: white;
-  font-family: "Geo", sans-serif;
 }

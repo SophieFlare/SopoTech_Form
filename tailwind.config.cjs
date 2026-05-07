@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx}"],
-
-
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
 
   theme: {
     extend: {
@@ -16,7 +14,7 @@ module.exports = {
 
         "white-100": "#f3f3f3",
 
-        "terminal-bg": "#000000",
+        "terminal-bg": "#020617",
         "terminal-text": "#ff0033",
       },
 
@@ -29,8 +27,8 @@ module.exports = {
       },
 
       fontFamily: {
-        minster: ["'UnifrakturCook'", "cursive"],
-        mono: ["'JetBrains Mono'", "monospace"],
+        minster: ["UnifrakturCook", "cursive"],
+        mono: ["JetBrains Mono", "monospace"],
         geo: ["Geo", "sans-serif"],
       },
 
